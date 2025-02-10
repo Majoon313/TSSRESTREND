@@ -41,22 +41,27 @@
 CHOW <- function(anu.VI, acu.RF, VI.index, breakpoints, acu.TM = NULL, sig = 0.05) {
   # ==============================================================================================
   # ========== Sanity check the input data ==========
-  if (class(anu.VI) != "ts")
+  if (class(anu.VI) != "ts") {
     stop("anu.VI Not a time series object")
-  if (class(acu.RF) != "ts")
+    }
+  if (class(acu.RF) != "ts") {
     stop("acu.RF Not a time series object")
+    }
   ti <- time(anu.VI)
   f <- frequency(anu.VI)
   #check the two ts object cover the same time period
   ti2 <- time(acu.RF)
   f2 <- frequency(acu.RF)
-  if (!identical(ti, ti2))
+  if (!identical(ti, ti2)) {
     stop("ts object do not have the same time")
-  if (!identical(f, f2))
+    }
+  if (!identical(f, f2)) {
     stop("ts object do not have the same frequency")
+    }
   # need to test the breakpoints to make sure they are numeric
-  if (class(breakpoints) != "numeric")
+  if (class(breakpoints) != "numeric") {
     stop("Breakpoints are not class numeric")
+    }
 
   # ==============================================================================================
   # ========== Look at the breakpoints and set up variables ==========
